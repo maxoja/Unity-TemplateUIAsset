@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/UIInterfaces.cs">
+    <Files>
+      <File FileName="Assets/scripts/UIAskBox2.cs" Line="64" Column="30" />
+      <File FileName="Assets/scripts/UINotifyBox.cs" Line="49" Column="2" />
+      <File FileName="Assets/scripts/UIButton.cs" Line="43" Column="38" />
+      <File FileName="Assets/scripts/UIInterfaces.cs" Line="29" Column="14" NotebookId="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
