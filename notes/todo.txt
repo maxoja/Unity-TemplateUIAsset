@@ -1,0 +1,7 @@
+need test 	// add animator speed feature
+done 		// check tag for every prefab element + including children of them
+done 		// make progress bar filling ratio serialise field
+done 		// add image_fill.fillAmount = ratio; in init of progress bar
+done 		// remove execute in edit mode of alpha linker
+done 		// set transition duration to 0
+done		// attach blocked to boxes

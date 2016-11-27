@@ -16,6 +16,7 @@ public class UIProgressBar : UIElement ,IUIProgressBar
 	private Text text_load;
 	private Text text_title;
 
+	[SerializeField]
 	private float ratio = 0.5f;
 
 	public override bool Init()
@@ -47,13 +48,14 @@ public class UIProgressBar : UIElement ,IUIProgressBar
 			}
 		}
 
+		image_fill.fillAmount = ratio;
 		return true;
 	}
 
 	// Update is called once per frame
 	void Update () 
 	{
-		image_fill.fillAmount = Mathf.Lerp(image_fill.fillAmount, ratio, Time.deltaTime);
+		image_fill.fillAmount = Mathf.Lerp(image_fill.fillAmount, ratio, Time.deltaTime*5);
 	}
 
 	public void AddFill(float _add)

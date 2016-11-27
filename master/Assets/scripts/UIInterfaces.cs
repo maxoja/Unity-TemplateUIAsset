@@ -10,11 +10,13 @@ public enum UIType
 	BUTTON_OK = 4,
 	BUTTON_NO = 5,
 	BUTTON = 6,
-	BLOCKADE = 17,
+	BOARD = 17,
 	INPUTFIELD = 19,
 	BOX_INPUT = 20,
 	BOX_SCROLL = 21,
 	BOX_ASK2 = 22,
+	SCREEN_NOTIFY = 23,
+
 	//text
 	TEXT_TITLE = 7,
 	TEXT_LOAD = 8,
@@ -29,8 +31,9 @@ public enum UIType
 	IMAGE_FILL = 13,
 	IMAGE_BG = 14,
 	IMAGE_FRAME = 15,
+	IMAGE_BOX = 24,
 
-	//next 23
+	//next 25
 }
 
 public interface IUIElement
@@ -65,7 +68,7 @@ public interface IUINotifyBox
 public interface IUIAskBox2
 {
 	void SetContent(string _text);
-	void SetButton(string _text1 , string _tex2 );
+	void SetButton(string _text1, string _tex2);
 
 	void AddCallbackYes(UnityEngine.Events.UnityAction action);
 	void AddCallbackNo(UnityEngine.Events.UnityAction action);

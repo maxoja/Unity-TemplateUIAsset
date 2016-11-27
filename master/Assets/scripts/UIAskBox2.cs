@@ -4,11 +4,13 @@ using UnityEngine.UI;
 
 public class UIAskBox2 : UIElement,IUIAskBox2 
 {
+	[Header("Require IMAGE_BOX tag")]
 	[Header("Require BUTTON_OK tag")]
 	[Header("Require BUTTON_NO tag")]
 	public string note = "";
 
-	private Image image_bg;
+	private Image image_board;
+	private Image image_box;
 	private UITextBox textbox;
 	private UIButton button_yes;
 	private UIButton button_no;
@@ -18,12 +20,15 @@ public class UIAskBox2 : UIElement,IUIAskBox2
 		if (base.Init() == false)
 			return false;
 
-		image_bg = GetComponent<Image>();
+		image_board = GetComponent<Image>();
 		textbox = GetComponentInChildren<UITextBox>();
 
 		foreach ( UIElement e in GetComponentsInChildren<UIElement>())
 			switch (e.GetUIType())
 			{
+			case UIType.IMAGE_BOX :
+					image_box = e.GetComponent<Image>();
+					break;
 			case UIType.BUTTON_OK :
 					button_yes = e.GetComponent<UIButton>();
 					break;

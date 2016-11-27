@@ -6,6 +6,8 @@ public class UIElement : MonoBehaviour , IUIElement
 {
 	[SerializeField]
 	protected UIType type;
+	[SerializeField]
+	protected float speed_animator = 1f;
 
 	[HideInInspector]
 	public bool showed = false;
@@ -29,6 +31,9 @@ public class UIElement : MonoBehaviour , IUIElement
 
 		childElements = GetComponentsInChildren<UIElement>();
 		animator = GetComponent<Animator>();
+
+		if (animator != null)
+			animator.speed = speed_animator;
 
 		foreach (UIElement e in childElements)
 			e.Init();
@@ -55,8 +60,10 @@ public class UIElement : MonoBehaviour , IUIElement
 		if (animator != null)
 		{
 			if (!animator.isInitialized)
+			{
 				animator.StartPlayback();
-
+				animator.speed = speed_animator;
+			}
 			animator.Play("showed");
 		}
 	}
@@ -74,7 +81,10 @@ public class UIElement : MonoBehaviour , IUIElement
 		if (animator != null)
 		{
 			if (!animator.isInitialized)
+			{
 				animator.StartPlayback();
+				animator.speed = speed_animator;
+			}
 
 			animator.Play("hidden");
 		}
@@ -100,7 +110,10 @@ public class UIElement : MonoBehaviour , IUIElement
 		gameObject.SetActive(true);
 
 		if (!animator.isInitialized)
+		{
 			animator.StartPlayback();
+			animator.speed = speed_animator;
+		}
 
 		animator.SetTrigger("show");
 
@@ -113,10 +126,10 @@ public class UIElement : MonoBehaviour , IUIElement
 	{
 		if (!inited)
 			Init();
-		
+
 		if (!showed)
 			return;
-		
+
 		if (animator == null)
 		{
 			Debug.LogWarning("no animator attached\ncannot Show_Animated()");
@@ -126,7 +139,10 @@ public class UIElement : MonoBehaviour , IUIElement
 		showed = false;
 
 		if (!animator.isInitialized)
+		{
 			animator.StartPlayback();
+			animator.speed = speed_animator;
+		}
 		
 		animator.SetTrigger("hide");
 

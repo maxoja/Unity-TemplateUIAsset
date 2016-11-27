@@ -4,10 +4,11 @@ using UnityEngine.UI;
 
 public class UINotifyBox : UIElement,IUINotifyBox
 {
-	[Header("Require no tag")]
+	[Header("Require IMAGE_BOX tag")]
 	public string note = "";
 
-	private Image image_bg;
+	private Image image_box;
+	private Image image_screen;
 	private UITextBox textbox;
 	private UIButton button_ok;
 
@@ -16,9 +17,13 @@ public class UINotifyBox : UIElement,IUINotifyBox
 		if (base.Init() == false)
 			return false;
 
-		image_bg = GetComponent<Image>();
+		image_screen = GetComponent<Image>();
 		textbox = GetComponentInChildren<UITextBox>();
 		button_ok = GetComponentInChildren<UIButton>();
+
+		foreach (UIElement e in GetComponentsInChildren<UIElement>())
+			if (e.GetUIType() == UIType.IMAGE_BOX)
+				image_box = e.GetComponent<Image>();
 
 		AddCallbackOk(OnOk);
 
@@ -27,7 +32,7 @@ public class UINotifyBox : UIElement,IUINotifyBox
 
 	protected void OnOk()
 	{
-		return;
+		Hide_Animated();
 	}
 
 	public void SetContent(string  _text)

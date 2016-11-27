@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine.UI;
 
-[ExecuteInEditMode]
 public class UILinker_ImageAlpha : MonoBehaviour 
 {
 	public float alpha_multi = 1;
