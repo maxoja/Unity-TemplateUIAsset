@@ -1,4 +1,5 @@
-﻿
+﻿using UnityEngine;
+
 public enum UIType
 {
 	NOTSET = 0,
@@ -77,6 +78,7 @@ public interface IUIAskBox2
 public interface IUIButton
 {
 	void SetText(string _text);
+	void SetImage(Sprite sprite);
 
 	void AddCallback(UnityEngine.Events.UnityAction action);
 }

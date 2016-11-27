@@ -35,6 +35,14 @@ public class UIButton : UIElement,IUIButton
 		text_button.text = _text;
 	}
 
+	public void SetImage(Sprite sprite)
+	{
+		if (!inited)
+			Init();
+		
+		image_button.sprite = sprite;
+	}
+
 	public void AddCallback(UnityEngine.Events.UnityAction action)
 	{
 		if (!inited)

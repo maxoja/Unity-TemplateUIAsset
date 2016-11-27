@@ -1,13 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/UILinker_ImageAlpha.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/UIButton.cs">
     <Files>
-      <File FileName="Assets/scripts/UIAskBox2.cs" Line="32" Column="12" />
-      <File FileName="Assets/scripts/UINotifyBox.cs" Line="22" Column="50" />
-      <File FileName="Assets/scripts/UIButton.cs" Line="43" Column="38" />
-      <File FileName="Assets/scripts/UIProgressBar.cs" Line="20" Column="29" />
+      <File FileName="Assets/scripts/UIAskBox2.cs" Line="53" Column="10" />
+      <File FileName="Assets/scripts/UINotifyBox.cs" Line="34" Column="3" />
+      <File FileName="Assets/scripts/UIButton.cs" Line="25" Column="25" />
+      <File FileName="Assets/scripts/UIProgressBar.cs" Line="16" Column="25" />
       <File FileName="Assets/scripts/UILinker_TextAlpha.cs" Line="4" Column="1" />
-      <File FileName="Assets/scripts/UILinker_ImageAlpha.cs" Line="14" Column="21" />
-      <File FileName="Assets/scripts/UIInterfaces.cs" Line="96" Column="2" NotebookId="1" />
+      <File FileName="Assets/scripts/UILinker_ImageAlpha.cs" Line="8" Column="30" />
+      <File FileName="Assets/scripts/UIInterfaces.cs" Line="111" Column="2" NotebookId="1" />
       <File FileName="Assets/scripts/UIElement.cs" Line="20" Column="30" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
