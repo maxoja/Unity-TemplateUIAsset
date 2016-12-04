@@ -85,4 +85,20 @@ public class UIAskBox2 : UIElement,IUIAskBox2
 
 		button_no.AddCallback(action);
 	}
+
+	public void ClearCallbackYes()
+	{
+		if (!inited)
+			Init();
+		
+		button_yes.ClearCallback();
+	}
+
+	public void ClearCallbackNo()
+	{
+		if (!inited)
+			Init();
+
+		button_no.ClearCallback();
+	}
 }

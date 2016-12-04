@@ -7,4 +7,10 @@ done 		// set transition duration to 0
 done		// attach blocked to boxes
 
 done 		// change ui button image 
+done 		// enable screen block recasting when showed and not when hidden
+done 		// add clear callback for all elements
+done 		//add Get loaded for progress bar
+done		// fix development pattern
+
 // test animator speed feature
+

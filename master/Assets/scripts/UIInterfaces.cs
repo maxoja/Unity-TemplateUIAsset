@@ -1,46 +1,8 @@
 ﻿using UnityEngine;
-
-public enum UIType
-{
-	NOTSET = 0,
-
-	//group
-	PROGRESSBAR = 1,
-	TEXT_BOX = 2,
-	BOX_NOTIFY = 3,
-	BUTTON_OK = 4,
-	BUTTON_NO = 5,
-	BUTTON = 6,
-	BOARD = 17,
-	INPUTFIELD = 19,
-	BOX_INPUT = 20,
-	BOX_SCROLL = 21,
-	BOX_ASK2 = 22,
-	SCREEN_NOTIFY = 23,
-
-	//text
-	TEXT_TITLE = 7,
-	TEXT_LOAD = 8,
-	TEXT_BUTTON = 9,
-	TEXT_CONTENT = 10,
-	TEXT_LABEL = 16,
-	TEXT_PLACE = 18,
-
-	//image
-	IMAGE_AREA = 11,
-	IMAGE_BUTTON = 12,
-	IMAGE_FILL = 13,
-	IMAGE_BG = 14,
-	IMAGE_FRAME = 15,
-	IMAGE_BOX = 24,
-
-	//next 25
-}
+using UnityEngine.Events;
 
 public interface IUIElement
 {
-	UIType GetUIType();
-
 	bool Init();
 
 	void Show_Sudden();
@@ -58,29 +20,13 @@ public interface IUIProgressBar
 	void SetLoadText(string _text);
 }
 
-public interface IUINotifyBox
-{
-	void SetContent(string _text);
-	void SetButton(string _text);
-
-	void AddCallbackOk(UnityEngine.Events.UnityAction action);
-}
-
-public interface IUIAskBox2
-{
-	void SetContent(string _text);
-	void SetButton(string _text1, string _tex2);
-
-	void AddCallbackYes(UnityEngine.Events.UnityAction action);
-	void AddCallbackNo(UnityEngine.Events.UnityAction action);
-}
-
 public interface IUIButton
 {
 	void SetText(string _text);
 	void SetImage(Sprite sprite);
 
-	void AddCallback(UnityEngine.Events.UnityAction action);
+	void AddCallback(UnityAction action);
+	void ClearCallback();
 }
 
 public interface IUITextbox
@@ -93,21 +39,80 @@ public interface IUIInputField
 	void SetPlaceHolderText(string _text);
 	string GetInputText();
 
-	void AddCallbackOnChanged(UnityEngine.Events.UnityAction<string> action);
-	void AddCallbackOnEntered(UnityEngine.Events.UnityAction<string> action);
+	void AddCallbackOnChanged(UnityAction<string> action);
+	void AddCallbackOnEntered(UnityAction<string> action);
+	void ClearCallbackOnChanged();
+	void ClearCallbackOnEntered();
 }
 
-public interface IUIInputBox
+public interface IUIInputBox : IUIInputField
 {
-	string GetInputText();
 	void SetLabelText(string _text);
-	void SetPlaceHolderText(string _text);
-
-	void AddCallbackOnChanged(UnityEngine.Events.UnityAction<string> action);
-	void AddCallbackOnEntered(UnityEngine.Events.UnityAction<string> action);
 }
+
+public interface IUINotifyBox
+{
+	void SetContent(string _text);
+	void SetButton(string _text);
+
+	void AddCallbackOk(UnityAction action);
+	void ClearCallbackOk();
+}
+
+public interface IUIAskBox
+{
+	void SetContent(string _text);
+
+	void SetButton(int _id , string _text);
+	void SetButtons(string[] texts);
+
+	void AddButtonCallback(int _id, UnityAction action);
+	void AddButtonsCallback(UnityAction[] actions);
+	void ClearButtonCallback(int _id);
+	void ClearButtonsCallbacks();
+}
+
+
 
 public interface IUIScrollBox
 {
-	
+
 }
+
+
+//public enum UIType
+//{
+//	NOTSET = 0,
+
+//	//group
+//	PROGRESSBAR = 1,
+//	TEXT_BOX = 2,
+//	BOX_NOTIFY = 3,
+//	BUTTON_OK = 4,
+//	BUTTON_NO = 5,
+//	BUTTON = 6,
+//	BOARD = 17,
+//	INPUTFIELD = 19,
+//	BOX_INPUT = 20,
+//	BOX_SCROLL = 21,
+//	BOX_ASK2 = 22,
+//	SCREEN_NOTIFY = 23,
+
+//	//text
+//	TEXT_TITLE = 7,
+//	TEXT_LOAD = 8,
+//	TEXT_BUTTON = 9,
+//	TEXT_CONTENT = 10,
+//	TEXT_LABEL = 16,
+//	TEXT_PLACE = 18,
+
+//	//image
+//	IMAGE_AREA = 11,
+//	IMAGE_BUTTON = 12,
+//	IMAGE_FILL = 13,
+//	IMAGE_BG = 14,
+//	IMAGE_FRAME = 15,
+//	IMAGE_BOX = 24,
+
+//	//next 25
+//}

@@ -4,11 +4,12 @@ using UnityEngine.UI;
 
 public class UIInputField : UIElement,IUIInputField 
 {
-	[Header("no tagging required")]
-	public string note = "";
-
-	private InputField input;
+	[SerializeField]
+	private InputField input_field;
+	[SerializeField]
 	private Text text_placeholder;
+	[SerializeField]
+	private Image image_text_bg;
 
 	public override bool Init()
 	{
@@ -16,14 +17,6 @@ public class UIInputField : UIElement,IUIInputField
 			return false;
 		
 		inited = true;
-		input = GetComponent<InputField>();
-
-		foreach (UIElement e in GetComponentsInChildren<UIElement>())
-			if (e.GetUIType() == UIType.TEXT_PLACE)
-			{
-				text_placeholder = e.GetComponent<Text>();
-				break;
-			}
 
 		AddCallbackOnChanged(OnChanged);
 		AddCallbackOnEntered(OnEntered);
@@ -41,7 +34,7 @@ public class UIInputField : UIElement,IUIInputField
 		return;
 	}
 
-	public void SetPlaceHolderText(string _text)
+	public virtual void SetPlaceHolderText(string _text)
 	{
 		if (!inited)
 			Init();
@@ -49,27 +42,43 @@ public class UIInputField : UIElement,IUIInputField
 		text_placeholder.text = _text;
 	}
 
-	public string GetInputText()
+	public virtual string GetInputText()
 	{
 		if (!inited)
 			Init();
 
-		return input.text;
+		return input_field.text;
 	}
 
-	public void AddCallbackOnChanged(UnityEngine.Events.UnityAction<string> action)
+	public virtual void AddCallbackOnChanged(UnityEngine.Events.UnityAction<string> action)
 	{
 		if (!inited)
 			Init();
-
-		input.onValueChanged.AddListener(action);
+		
+		input_field.onValueChanged.AddListener(action);
 	}
 
-	public void AddCallbackOnEntered(UnityEngine.Events.UnityAction<string> action)
+	public virtual void AddCallbackOnEntered(UnityEngine.Events.UnityAction<string> action)
 	{
 		if (!inited)
 			Init();
 
-		input.onEndEdit.AddListener(action);
+		input_field.onEndEdit.AddListener(action);
+	}
+
+	public virtual void ClearCallbackOnChanged()
+	{
+		if (!inited)
+			Init();
+
+		input_field.onValueChanged.RemoveAllListeners();
+	}
+
+	public virtual void ClearCallbackOnEntered()
+	{
+		if (!inited)
+			Init();
+
+		input_field.onEndEdit.RemoveAllListeners();
 	}
 }

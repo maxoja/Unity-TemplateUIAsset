@@ -4,19 +4,18 @@ using UnityEngine.UI;
 
 public class UIButton : UIElement,IUIButton 
 {
-	private Image image_button;
+	[SerializeField]
+	private Image image_button_bg;
+	[SerializeField]
 	private Button button;
+	[SerializeField]
 	private Text text_button;
 
 	public override bool Init()
 	{
 		if (base.Init() == false)
 			return false;
-
-		button = GetComponent<Button>();
-		image_button = GetComponent<Image>();
-		text_button = GetComponentInChildren<Text>();
-
+		
 		button.onClick.AddListener(OnClick);
 
 		return true;
@@ -27,7 +26,7 @@ public class UIButton : UIElement,IUIButton
 		return;
 	}
 
-	public void SetText(string _text)
+	public virtual void SetText(string _text)
 	{
 		if (!inited)
 			Init();
@@ -35,19 +34,27 @@ public class UIButton : UIElement,IUIButton
 		text_button.text = _text;
 	}
 
-	public void SetImage(Sprite sprite)
+	public virtual void SetImage(Sprite sprite)
 	{
 		if (!inited)
 			Init();
 		
-		image_button.sprite = sprite;
+		image_button_bg.sprite = sprite;
 	}
 
-	public void AddCallback(UnityEngine.Events.UnityAction action)
+	public virtual void AddCallback(UnityEngine.Events.UnityAction action)
 	{
 		if (!inited)
 			Init();
 		
 		button.onClick.AddListener(action);
+	}
+
+	public virtual void ClearCallback()
+	{
+		if (!inited)
+			Init();
+
+		button.onClick.RemoveAllListeners();
 	}
 }
